@@ -1,0 +1,14 @@
+{
+  "name": "node_cache_check",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ape.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sam0hack",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^2.1.1"
+  }
+}
