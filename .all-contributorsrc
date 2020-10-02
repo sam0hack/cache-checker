@@ -1,0 +1,25 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "RanjithGovindaraj",
+      "name": "Ranjith Govindaraj",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/44660650?v=4",
+      "profile": "https://github.com/RanjithGovindaraj",
+      "contributions": [
+        "tool",
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "cache-checker",
+  "projectOwner": "sam0hack",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
