@@ -1,6 +1,8 @@
 const puppeteer = require('puppeteer');
 const https = require("https");
 const http = require("http");
+// constants
+const URL_HAS_PROTOCOL_REGEX = /^https?:\/\//i;
 
 /*
  *This function loads the webpage first time so i can be cached 
@@ -22,7 +24,7 @@ first_load = async (URL) => {
     await page.goto(URL);
     browser.close();
     return true;
-}
+};
 
 /*
  * Main Method
@@ -33,7 +35,10 @@ first_load = async (URL) => {
 is_cached = async (URL) => {
     console.log("Cache Checker is running on " + URL);
     console.log("Please wait.....")
-    await first_load(URL); //<-- This function loads the webpage first time so i can be cached 
+
+    const updatedURL = URL.match(URL_HAS_PROTOCOL_REGEX) ? URL : `https://${URL}`;
+
+    await first_load(updatedURL); //<-- This function loads the webpage first time so i can be cached 
 
     //Create browser instance
     const browser = await puppeteer.launch({
@@ -52,6 +57,12 @@ is_cached = async (URL) => {
         'js': [],
         'font': [],
         'compression':[],
+        'count': {
+            'cssCount': 0,
+            'imageCount': 0,
+            'jsCount': 0,
+            'fontCount': 0,
+        },
         'other': []
     };
     is_leverage_cache = '';
@@ -69,15 +80,19 @@ is_cached = async (URL) => {
         if (request.resourceType() === 'stylesheet') {
 
             dataHashMap.css.push([request.url(), response._fromDiskCache]);
+            dataHashMap.count.cssCount++;
         } else if (request.resourceType() === 'script') {
 
             dataHashMap.js.push([request.url(), response._fromDiskCache]);
+            dataHashMap.count.jsCount++;
         } else if (request.resourceType() === 'image') {
 
             dataHashMap.image.push([request.url(), response._fromDiskCache]);
+            dataHashMap.count.imageCount++;
         } else if (request.resourceType() === 'font') {
 
             dataHashMap.font.push([request.url(), response._fromDiskCache]);
+            dataHashMap.count.fontCount++;
         } else if (request.resourceType() === 'document') {
 
             let cache = response._fromDiskCache;
@@ -104,8 +119,7 @@ is_cached = async (URL) => {
 
     });
 
-
-    await page.goto(URL);
+    await page.goto(updatedURL);
     await page.waitFor(5000);
 
     //Print the Results
@@ -132,7 +146,7 @@ is_cached = async (URL) => {
     })
     req.end();
 }
-
+};
 
 //is_cached('https://github.com');
 
