@@ -30,7 +30,7 @@ first_load = async (URL) => {
  *
  *
  */
-is_cached = async (URL) => {
+exports.is_cached =  is_cached = async (URL) => {
   console.log('Cache Checker is running on ' + URL);
   console.log('Please wait.....');
 
@@ -140,13 +140,3 @@ is_cached = async (URL) => {
   });
   req.end();
 };
-
-//is_cached('https://github.com');
-
-// process command line argument
-if (!process.argv[2]) {
-  console.log('Please enter a link');
-  process.exit(1);
-} else {
-  is_cached(process.argv[2]);
-}
