@@ -14,6 +14,24 @@
         "tool",
         "code"
       ]
+    },
+    {
+      "login": "sam0hack",
+      "name": "Sam",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/5379650?v=4",
+      "profile": "https://ilmtechnosolutions.com/?team=sameer",
+      "contributions": [
+        "tool",
+        "code",
+        "design",
+        "example",
+        "ideas",
+        "review",
+        "security",
+        "test",
+        "infra",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
