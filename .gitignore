@@ -35,7 +35,7 @@ bower_components
 .lock-wscript
 
 #lock file
-package-lock.json
+#package-lock.json
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
 
