@@ -1,0 +1,43 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "RanjithGovindaraj",
+      "name": "Ranjith Govindaraj",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/44660650?v=4",
+      "profile": "https://github.com/RanjithGovindaraj",
+      "contributions": [
+        "tool",
+        "code"
+      ]
+    },
+    {
+      "login": "sam0hack",
+      "name": "Sam",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/5379650?v=4",
+      "profile": "https://ilmtechnosolutions.com/?team=sameer",
+      "contributions": [
+        "tool",
+        "code",
+        "design",
+        "example",
+        "ideas",
+        "review",
+        "security",
+        "test",
+        "infra",
+        "doc"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "cache-checker",
+  "projectOwner": "sam0hack",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}

@@ -51,12 +51,20 @@ is_cached = async (URL) => {
         'image': [],
         'js': [],
         'font': [],
+        'compression':[],
         'other': []
     };
     is_leverage_cache = '';
     page.on('requestfinished', (request) => {
 
         let response = request.response();
+
+        //check for compression headers in request
+        if (response.headers()['content-encoding'] !== undefined)
+            dataHashMap.compression.push([
+                request.url(),
+                response.headers()["content-encoding"],
+            ]);
 
         if (request.resourceType() === 'stylesheet') {
 
@@ -87,8 +95,8 @@ is_cached = async (URL) => {
                 cache = response._fromDiskCache;
             }
 
-            if (cache === true) { is_leverage_cache = `${URL} is leveraging broweser cache` } else { is_leverage_cache = `${URL} does not leverage broweser cache` };
-
+            if(cache===true) { is_leverage_cache= `${URL} is leveraging browser cache`  }else { is_leverage_cache= `${URL} does not leverage browser cache`};
+          
             dataHashMap.html.push([request.url(), cache]);
         } else {
             dataHashMap.other.push([request.url(), response._fromDiskCache]);
@@ -128,4 +136,10 @@ is_cached = async (URL) => {
 
 //is_cached('https://github.com');
 
-is_cached('https://ilmtechnosolutions.com');
+// process command line argument
+if (!process.argv[2]) {
+    console.log("Please enter a link");
+    process.exit(1);
+} else {
+    is_cached(process.argv[2]);
+}
