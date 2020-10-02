@@ -146,7 +146,7 @@ is_cached = async (URL) => {
     })
     req.end();
 }
-};
+
 
 //is_cached('https://github.com');
 
