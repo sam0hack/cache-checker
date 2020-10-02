@@ -1,11 +1,11 @@
 {
-  "name": "node_cache_check",
+  "name": "@sam0hck/cache-checker",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple nodeJs based tool to check website cache",
   "main": "cache_checker.js",
   "bin": {
-    "greet": "./bin/index.js"
-},
+    "greet": "bin/index.js"
+  },
   "scripts": {
     "test": "node ./bin/index.js https://github.com"
   },
@@ -13,5 +13,20 @@
   "license": "ISC",
   "dependencies": {
     "puppeteer": "^2.1.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sam0hack/cache-checker.git"
+  },
+  "keywords": [
+    "cache",
+    "checker",
+    "node",
+    "javascript"
+  ],
+  "bugs": {
+    "url": "https://github.com/sam0hack/cache-checker/issues"
+  },
+  "homepage": "https://github.com/sam0hack/cache-checker#readme"
 }
