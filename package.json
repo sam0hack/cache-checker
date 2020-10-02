@@ -9,6 +9,7 @@
   "author": "sam0hack",
   "license": "ISC",
   "dependencies": {
-    "puppeteer": "^2.1.1"
+    "puppeteer": "^2.1.1",
+    "yargs": "^16.0.3"
   }
 }
