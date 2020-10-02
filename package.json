@@ -4,7 +4,7 @@
   "description": "",
   "main": "ape.js",
   "scripts": {
-    "test": "node node_cache_check.js https://github.com"
+    "test": "node cache_checker.js https://github.com"
   },
   "author": "sam0hack",
   "license": "ISC",
