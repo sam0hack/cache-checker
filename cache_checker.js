@@ -50,33 +50,37 @@ is_cached = async (URL) => {
         'image': [],
         'js': [],
         'font': [],
-        'compression':[],
         'other': []
     };
+
+    let countHashMap = {
+        'cssCount': 0,
+        'imageCount': 0,
+        'jsCount': 0,
+        'fontCount': 0,
+    }
+    
     is_leverage_cache = '';
     page.on('requestfinished', (request) => {
 
         let response = request.response();
 
-        //check for compression headers in request
-        if (response.headers()['content-encoding'] !== undefined)
-            dataHashMap.compression.push([
-                request.url(),
-                response.headers()["content-encoding"],
-            ]);
-
         if (request.resourceType() === 'stylesheet') {
 
             dataHashMap.css.push([request.url(), response._fromDiskCache]);
+            countHashMap.cssCount++;
         } else if (request.resourceType() === 'script') {
 
             dataHashMap.js.push([request.url(), response._fromDiskCache]);
+            countHashMap.jsCount++;
         } else if (request.resourceType() === 'image') {
 
             dataHashMap.image.push([request.url(), response._fromDiskCache]);
+            countHashMap.imageCount++;
         } else if (request.resourceType() === 'font') {
 
             dataHashMap.font.push([request.url(), response._fromDiskCache]);
+            countHashMap.fontCount++;
         } else if (request.resourceType() === 'document') {
 
             let cache = response._fromDiskCache;
@@ -94,7 +98,7 @@ is_cached = async (URL) => {
                 cache = response._fromDiskCache;
             }
 
-            if(cache===true) { is_leverage_cache= `${URL} is leveraging browser cache`  }else { is_leverage_cache= `${URL} does not leverage browser cache`};
+            if(cache===true) { is_leverage_cache= `${URL} is leveraging broweser cache`  }else { is_leverage_cache= `${URL} does not leverage broweser cache`};
 
             dataHashMap.html.push([request.url(), cache]);
         } else {
@@ -109,6 +113,7 @@ is_cached = async (URL) => {
 
     //Print the Results
     console.log(dataHashMap);
+    console.log(countHashMap);
     console.log(is_leverage_cache);
     browser.close();
     console.log('Completed!');
@@ -117,10 +122,4 @@ is_cached = async (URL) => {
 
 //is_cached('https://github.com');
 
-// process command line argument
-if (!process.argv[2]) {
-    console.log("Please enter a link");
-    process.exit(1);
-} else {
-    is_cached(process.argv[2]);
-}
+is_cached('https://ilmtechnosolutions.com');
