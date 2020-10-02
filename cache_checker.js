@@ -51,6 +51,12 @@ is_cached = async (URL) => {
         'js': [],
         'font': [],
         'compression':[],
+        'count': {
+            'cssCount': 0,
+            'imageCount': 0,
+            'jsCount': 0,
+            'fontCount': 0,
+        },
         'other': []
     };
     is_leverage_cache = '';
@@ -68,15 +74,19 @@ is_cached = async (URL) => {
         if (request.resourceType() === 'stylesheet') {
 
             dataHashMap.css.push([request.url(), response._fromDiskCache]);
+            dataHashMap.count.cssCount++;
         } else if (request.resourceType() === 'script') {
 
             dataHashMap.js.push([request.url(), response._fromDiskCache]);
+            dataHashMap.count.jsCount++;
         } else if (request.resourceType() === 'image') {
 
             dataHashMap.image.push([request.url(), response._fromDiskCache]);
+            dataHashMap.count.imageCount++;
         } else if (request.resourceType() === 'font') {
 
             dataHashMap.font.push([request.url(), response._fromDiskCache]);
+            dataHashMap.count.fontCount++;
         } else if (request.resourceType() === 'document') {
 
             let cache = response._fromDiskCache;
