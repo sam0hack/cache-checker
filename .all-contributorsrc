@@ -32,6 +32,17 @@
         "infra",
         "doc"
       ]
+    },
+    {
+      "login": "sanchitgupta001",
+      "name": "Sanchit Gupta",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/11902742?v=4",
+      "profile": "https://github.com/sanchitgupta001",
+      "contributions": [
+        "tool",
+        "test",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
