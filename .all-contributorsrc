@@ -1,0 +1,87 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "RanjithGovindaraj",
+      "name": "Ranjith Govindaraj",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/44660650?v=4",
+      "profile": "https://github.com/RanjithGovindaraj",
+      "contributions": [
+        "tool",
+        "code"
+      ]
+    },
+    {
+      "login": "sam0hack",
+      "name": "Sam",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/5379650?v=4",
+      "profile": "https://ilmtechnosolutions.com/?team=sameer",
+      "contributions": [
+        "tool",
+        "code",
+        "design",
+        "example",
+        "ideas",
+        "review",
+        "security",
+        "test",
+        "infra",
+        "doc"
+      ]
+    },
+    {
+      "login": "sanchitgupta001",
+      "name": "Sanchit Gupta",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/11902742?v=4",
+      "profile": "https://github.com/sanchitgupta001",
+      "contributions": [
+        "tool",
+        "test",
+        "code"
+      ]
+    },
+    {
+      "login": "akshay512",
+      "name": "Akshay A S",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/43413961?v=4",
+      "profile": "https://github.com/akshay512",
+      "contributions": [
+        "tool",
+        "test",
+        "code"
+      ]
+    },
+    {
+      "login": "subhamagrawal7",
+      "name": "Subham Agrawal",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/34346812?v=4",
+      "profile": "https://github.com/subhamagrawal7",
+      "contributions": [
+        "tool",
+        "test",
+        "code"
+      ]
+    },
+    {
+      "login": "harshilparmar",
+      "name": "Harshil Parmar",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/45915468?v=4",
+      "profile": "https://github.com/harshilparmar",
+      "contributions": [
+        "tool",
+        "test",
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "cache-checker",
+  "projectOwner": "sam0hack",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}

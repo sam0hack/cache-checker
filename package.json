@@ -2,9 +2,12 @@
   "name": "node_cache_check",
   "version": "1.0.0",
   "description": "",
-  "main": "ape.js",
+  "main": "cache_checker.js",
+  "bin": {
+    "greet": "./bin/index.js"
+},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node ./bin/index.js https://github.com"
   },
   "author": "sam0hack",
   "license": "ISC",
