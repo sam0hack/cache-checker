@@ -4,7 +4,7 @@
   "description": "",
   "main": "ape.js",
   "scripts": {
-    "run" : "node node_cache_check.js https://github.com"
+    "run" : "node node_cache_check.js https://github.com",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "sam0hack",
