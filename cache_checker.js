@@ -1,5 +1,6 @@
 const puppeteer = require('puppeteer');
-
+const https = require("https");
+const http = require("http");
 
 /*
  *This function loads the webpage first time so i can be cached 
@@ -30,7 +31,7 @@ first_load = async (URL) => {
  *
  */
 is_cached = async (URL) => {
-    console.log("Cache Checker is running on "+URL);
+    console.log("Cache Checker is running on " + URL);
     console.log("Please wait.....")
     await first_load(URL); //<-- This function loads the webpage first time so i can be cached 
 
@@ -73,11 +74,11 @@ is_cached = async (URL) => {
 
             let cache = response._fromDiskCache;
 
-            
+
             if (cache === false) {
 
                 if (response._status === 304) //<--The HTTP 304 Not Modified client redirection response code indicates that there is no need to retransmit the requested resources. 
-                                              //It is an implicit redirection to a cached resource.
+                //It is an implicit redirection to a cached resource.
                 {
                     cache = true;
                 }
@@ -86,7 +87,7 @@ is_cached = async (URL) => {
                 cache = response._fromDiskCache;
             }
 
-            if(cache===true) { is_leverage_cache= `${URL} is leveraging broweser cache`  }else { is_leverage_cache= `${URL} does not leverage broweser cache`};
+            if (cache === true) { is_leverage_cache = `${URL} is leveraging broweser cache` } else { is_leverage_cache = `${URL} does not leverage broweser cache` };
 
             dataHashMap.html.push([request.url(), cache]);
         } else {
@@ -104,6 +105,24 @@ is_cached = async (URL) => {
     console.log(is_leverage_cache);
     browser.close();
     console.log('Completed!');
+
+    /* To check if the URL has SSL certificate */
+    const options = URL;
+    var client = http; // To check if the http has a SSL certificate
+    if (URL.indexOf("https") === 0) {
+        client = https;
+    }
+    var req = client.request(options, function (res) {
+        if (res.socket.authorized) {
+            console.log("The website uses SSL Certificate!!");
+        } else {
+            console.log("The website does not use SSL Certificate!!");
+        }
+    });
+    req.on('error', (e) => {
+        console.error(e);
+    })
+    req.end();
 }
 
 
