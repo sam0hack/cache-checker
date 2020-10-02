@@ -20,7 +20,7 @@ first_load = async (URL,flag) => {
   const response = await page.goto(URL);
   if(flag == "--server" || flag == "--s"  ){
     const extendedServerDetails = {domainName:URL,...response.headers(),...response.remoteAddress()};
-    console.table(extendedServerDetails);
+    console.log(extendedServerDetails); //initially used tables, but they got out of view for large headers
   }
   browser.close();
   return true;
@@ -148,18 +148,5 @@ is_cached = async (URL,flag) => {
 }
 
 
-//is_cached('https://github.com');
 
-// process command line argument
-const [url,flag] = process.argv.slice(2);
-if (!url) {
-    exitScript("please enter a valid link")
-} else {
-    if(url.startsWith("--")) exitScript("please enter a valid link");
-    is_cached(url,flag);
-}
-
-function exitScript(message){
-    console.log(message);
-    process.exit(1);
-}
+module.exports ={is_cached};
