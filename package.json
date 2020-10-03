@@ -7,14 +7,18 @@
     "greet": "bin/index.js"
   },
   "scripts": {
-    "test": "node ./bin/index.js https://github.com"
+    "test": "node ./bin/index.js https://github.com",
+    "prettier": "./scripts/prettier.sh",
+    "prettier-fix": "npm run prettier"
   },
   "author": "sam0hack",
   "license": "ISC",
   "dependencies": {
     "puppeteer": "^2.1.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "prettier": "^2.1.2"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sam0hack/cache-checker.git"

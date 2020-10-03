@@ -1,6 +1,6 @@
-const puppeteer = require("puppeteer");
-const https = require("https");
-const http = require("http");
+const puppeteer = require('puppeteer');
+const https = require('https');
+const http = require('http');
 // constants
 const URL_HAS_PROTOCOL_REGEX = /^https?:\/\//i;
 
@@ -12,13 +12,13 @@ const URL_HAS_PROTOCOL_REGEX = /^https?:\/\//i;
 first_load = async (URL, flag) => {
   //Create browser instance
   const browser = await puppeteer.launch({
-    userDataDir: "/tmp/user-data-dir", //<--- to save user data like cache
+    userDataDir: '/tmp/user-data-dir', //<--- to save user data like cache
     headless: true, //<-- false for headful mode
-    args: ["--no-sandbox"],
+    args: ['--no-sandbox'],
   });
   const page = await browser.newPage();
   const response = await page.goto(URL);
-  if (flag == "--server" || flag == "--s") {
+  if (flag == '--server' || flag == '--s') {
     const extendedServerDetails = {
       domainName: URL,
       ...response.headers(),
@@ -37,8 +37,8 @@ first_load = async (URL, flag) => {
  *
  */
 is_cached = async (URL, flag) => {
-  console.log("Cache Checker is running on " + URL);
-  console.log("Please wait.....");
+  console.log('Cache Checker is running on ' + URL);
+  console.log('Please wait.....');
 
   const updatedURL = URL.match(URL_HAS_PROTOCOL_REGEX) ? URL : `https://${URL}`;
 
@@ -46,9 +46,9 @@ is_cached = async (URL, flag) => {
 
   //Create browser instance
   const browser = await puppeteer.launch({
-    userDataDir: "/tmp/user-data-dir", //<--- to save user data like cache
+    userDataDir: '/tmp/user-data-dir', //<--- to save user data like cache
     headless: true, //<-- false for headful mode
-    args: ["--no-sandbox"],
+    args: ['--no-sandbox'],
   });
 
   const page = await browser.newPage();
@@ -69,30 +69,30 @@ is_cached = async (URL, flag) => {
     },
     other: [],
   };
-  is_leverage_cache = "";
-  page.on("requestfinished", (request) => {
+  is_leverage_cache = '';
+  page.on('requestfinished', (request) => {
     let response = request.response();
 
     //check for compression headers in request
-    if (response.headers()["content-encoding"] !== undefined)
+    if (response.headers()['content-encoding'] !== undefined)
       dataHashMap.compression.push([
         request.url(),
-        response.headers()["content-encoding"],
+        response.headers()['content-encoding'],
       ]);
 
-    if (request.resourceType() === "stylesheet") {
+    if (request.resourceType() === 'stylesheet') {
       dataHashMap.css.push([request.url(), response._fromDiskCache]);
       dataHashMap.count.cssCount++;
-    } else if (request.resourceType() === "script") {
+    } else if (request.resourceType() === 'script') {
       dataHashMap.js.push([request.url(), response._fromDiskCache]);
       dataHashMap.count.jsCount++;
-    } else if (request.resourceType() === "image") {
+    } else if (request.resourceType() === 'image') {
       dataHashMap.image.push([request.url(), response._fromDiskCache]);
       dataHashMap.count.imageCount++;
-    } else if (request.resourceType() === "font") {
+    } else if (request.resourceType() === 'font') {
       dataHashMap.font.push([request.url(), response._fromDiskCache]);
       dataHashMap.count.fontCount++;
-    } else if (request.resourceType() === "document") {
+    } else if (request.resourceType() === 'document') {
       let cache = response._fromDiskCache;
 
       if (cache === false) {
@@ -141,12 +141,12 @@ is_cached = async (URL, flag) => {
   }
   var req = client.request(options, function (res) {
     if (res.socket.authorized) {
-      console.log("The website uses SSL Certificate!!");
+      console.log('The website uses SSL Certificate!!');
     } else {
-      console.log("The website does not use SSL Certificate!!");
+      console.log('The website does not use SSL Certificate!!');
     }
   });
-  req.on("error", (e) => {
+  req.on('error', (e) => {
     console.error(e);
   });
   req.end();
