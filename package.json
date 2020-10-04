@@ -13,10 +13,16 @@
   },
   "author": "sam0hack",
   "license": "ISC",
+  "git-pre-hooks": {
+    "pre-commit": [
+      "npm run prettier-fix"
+    ]
+  },
   "dependencies": {
     "puppeteer": "^2.1.1"
   },
   "devDependencies": {
+    "git-pre-hooks": "^1.2.1",
     "prettier": "^2.1.2"
   },
   "repository": {
