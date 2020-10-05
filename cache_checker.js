@@ -66,6 +66,8 @@ is_cached = async (URL, flag) => {
       imageCount: 0,
       jsCount: 0,
       fontCount: 0,
+      htmlCount: 0,
+      otherCount: 0,
     },
     other: [],
   };
@@ -112,8 +114,10 @@ is_cached = async (URL, flag) => {
       }
 
       dataHashMap.html.push([request.url(), cache]);
+      dataHashMap.count.htmlCount++;
     } else {
       dataHashMap.other.push([request.url(), response._fromDiskCache]);
+      dataHashMap.count.otherCount++;
     }
   });
 
@@ -123,20 +127,22 @@ is_cached = async (URL, flag) => {
   //Print the Results
   console.log(dataHashMap);
   console.log(
-    "Total Request Made:",
+    'Total Request Made:',
     dataHashMap.count.cssCount +
       dataHashMap.count.imageCount +
       dataHashMap.count.fontCount +
-      dataHashMap.count.jsCount
+      dataHashMap.count.jsCount +
+      dataHashMap.count.htmlCount +
+      dataHashMap.count.otherCount
   );
   console.log(is_leverage_cache);
   browser.close();
-  console.log("Completed!");
+  console.log('Completed!');
 
   /* To check if the URL has SSL certificate */
-  const options = URL;
+  const options = updatedURL;
   var client = http; // To check if the http has a SSL certificate
-  if (URL.indexOf("https") === 0) {
+  if (updatedURL.indexOf('https') === 0) {
     client = https;
   }
   var req = client.request(options, function (res) {
